@@ -7,13 +7,14 @@ import struts.request.mapping.MapPair;
 
 public class Main {
 	public static void main(String[] args) {
+
 		Server server = new Server();
 		server.init();
 
 		// Request 1
 		List<MapPair> params = new LinkedList<>();
 		params.add(new MapPair("username", "surc"));
-		params.add(new MapPair("password", "1243"));
+		params.add(new MapPair("password", "1414213"));
 		server.getRequest("login", params);
 
 		// Request 2

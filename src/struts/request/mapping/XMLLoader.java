@@ -14,8 +14,8 @@ public class XMLLoader {
 		xmlActions.add(new XMLActionEntity("login", "action.LoginRegister",
 				"login",
 				new XMLResultEntity[] {
-						new XMLResultEntity("success", "jsp",
-								new String[] { "location", "/succLogin.jsp" }),
+						new XMLResultEntity("success", "stream",
+								new String[] { "fileName", "1.png" }),
 						new XMLResultEntity("error", "jsp",
 								new String[] { "location", "/error.jsp" }) }));
 		xmlActions.add(new XMLActionEntity("register", "action.LoginRegister",

@@ -26,5 +26,16 @@ public class ResultEntity {
 	public void setParams(List<MapPair> params) {
 		this.params = params;
 	}
+	
+	@Override
+	public String toString() {
+		String str = "";
+		str += resultType + " - {";
+		for(MapPair param : params) {
+			str += param + ",";
+		}
+		str += "}";
+		return str;
+	}
 
 }

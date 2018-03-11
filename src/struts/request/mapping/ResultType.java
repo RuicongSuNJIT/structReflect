@@ -7,7 +7,16 @@ public class ResultType {
 	private Method method;
 
 	public ResultType(String className) {
-		// Use reflect to get the result types.
+		try {
+			rClass = Class.forName(className);
+			method = rClass.getMethod("execute", new Class<?>[] {});
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Class<?> getrClass() {
@@ -24,5 +33,12 @@ public class ResultType {
 
 	public void setMethod(Method method) {
 		this.method = method;
+	}
+	@Override
+	public String toString() {
+		String str = "";
+		str += "Class: " + rClass + " - ";
+		str += "Method: " + method;
+		return str;
 	}
 }

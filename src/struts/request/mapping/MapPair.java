@@ -24,4 +24,11 @@ public class MapPair {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		String str = "";
+		str += key + " : " + value;
+		return str;
+	}
 }

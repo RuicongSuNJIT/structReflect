@@ -10,7 +10,18 @@ public class ActionEntity {
 
 	public ActionEntity(String className, String methodName,
 			Map<String, ResultEntity> results) {
-		// Use Reflect get the action class and processing method
+		try {
+			aClass = Class.forName(className);
+			method = aClass.getMethod(
+					methodName == null ? "execute" : methodName,
+					new Class<?>[0]);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
 		this.results = results;
 	}
 
@@ -36,5 +47,17 @@ public class ActionEntity {
 
 	public void setResults(Map<String, ResultEntity> results) {
 		this.results = results;
+	}
+
+	@Override
+	public String toString() {
+		String str = "Action: \n";
+		str += "Class:" + aClass + "\n";
+		str += "Method:" + method + "\n";
+		str += "Results:\n";
+		for (Map.Entry<String, ResultEntity> result : results.entrySet()) {
+			str += "  " + result.getValue() + "\n";
+		}
+		return str;
 	}
 }
